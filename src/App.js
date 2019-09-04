@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import RecipeList from "./components/RecipeList";
 import FullRecipe from "./components/FullRecipe";
+import Nav from "./components/Nav";
+import SearchBar from "./components/SearchBar";
 import "./App.css";
 import header from "./img/header.jpg";
 
@@ -49,26 +51,18 @@ const App = () => {
 
   return (
     <div className="App">
-      {console.log(recipes)}
+      <Nav />
       {isEmpty(activeRecipe)}
       <Form
         onSubmit={getSearch}
         className="search-form"
         view={recipes.length === 0}
       >
-        <Center view={recipes.length === 0}>
-          {recipes.length === 0 ? <Logo>RecipeApp</Logo> : null}
-          <Input
-            className="search-bar"
-            type="text"
-            placeholder="ex. chicken"
-            value={search}
-            onChange={updateSearch}
-          />
-          <Button className="search-button" type="submit">
-            <i className="fas fa-search" />
-          </Button>
-        </Center>
+        <SearchBar
+          search={search}
+          updateSearch={updateSearch}
+          length={recipes.length}
+        />
       </Form>
       {recipes.length > 0 ? (
         <RecipeList recipes={recipes} handleActiveRecipe={setActiveRecipe} />
@@ -85,55 +79,13 @@ const Form = styled.form`
   display: block;
   height: ${props => (props.view ? "100vh" : "30vh")};
   background: linear-gradient(
-      to top,
+      120deg,
       rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.5)
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.3)
     ),
     url(${header});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-`;
-
-const Input = styled.input`
-  padding: 15px 35px;
-  border-radius: 35px 0 0 35px;
-  border: none;
-  font-size: 12pt;
-  background-color: rgba(0, 0, 0, 0.2);
-
-  &:focus,
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  &::placeholder {
-    color: white;
-  }
-`;
-
-const Button = styled.button`
-  font-size: 12pt;
-  padding: 15px 20px;
-  border-radius: 0 35px 35px 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
-  border: none;
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-`;
-
-const Center = styled.div`
-  position: absolute;
-  top: ${props => (props.view ? "50vh" : "15vh")};
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const Logo = styled.h1`
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 60px;
-  margin: 30px;
-  /* text-shadow: 0 0 5px rgba(0, 0, 0, 0.4); */
 `;
