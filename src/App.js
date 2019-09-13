@@ -5,7 +5,7 @@ import FullRecipe from "./components/FullRecipe";
 import Nav from "./components/Nav";
 import SearchBar from "./components/SearchBar";
 import "./App.css";
-import header from "./img/header.jpg";
+import header from "./img/header2.jpg";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -80,11 +80,11 @@ const Form = styled.form`
   height: ${props => (props.view ? "100vh" : "30vh")};
   background: linear-gradient(
       120deg,
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.3)
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.9)
     ),
     url(${header});
+  /* background: white; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

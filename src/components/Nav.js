@@ -23,7 +23,7 @@ const NavStyle = styled.nav`
   top: 0;
   left: 0;
   text-align: center;
-  background: rgba(139, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   width: 100vw;
   display: flex;
   justify-content: space-between;
